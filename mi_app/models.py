@@ -18,7 +18,7 @@ class Estudiantes(models.Model):
     apellido = models.CharField(max_length=50)
     email = models.EmailField()
 
-
+#entregable
 class Inscripcion(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)

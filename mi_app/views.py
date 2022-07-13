@@ -50,6 +50,7 @@ def formulario_busqueda(request):
 
     return render(request,"mi_app/buscar.html")
 
+#entregable
 def universidad_formulario(request):
     if request.method == "POST":
         miformulario = InscripcionUniversidad(request.POST)

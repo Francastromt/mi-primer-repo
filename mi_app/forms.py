@@ -7,6 +7,7 @@ class CursoFormulario(forms.Form):
 class CursoBusquedaFormulario(forms.Form):
     criterio = forms.CharField()
 
+#entregable
 class InscripcionUniversidad(forms.Form):
     nombre = forms.CharField()
     apellido = forms.CharField()

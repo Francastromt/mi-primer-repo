@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from mi_app.views import saludo,saludar_a,mostrar_index,listar_cursos,familia,listar_estudiantes,formulario_curso,formulario_busqueda,universidad_formulario
 
-
+#entregable
 urlpatterns = [
     path("mi-pagina/",mostrar_index),
     path("saludar/",saludo),

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from mi_app.views import saludo,saludar_a,mostrar_index,listar_cursos,familia,listar_estudiantes,formulario_curso,formulario_busqueda,universidad_formulario
+from mi_app.views import idioma_formulario, saludo,saludar_a,mostrar_index,listar_cursos,familia,listar_estudiantes,formulario_curso,formulario_busqueda,universidad_formulario,auto_formulario
 
 #entregable
 urlpatterns = [
@@ -12,5 +12,7 @@ urlpatterns = [
     path("listar_estudiantes/",listar_estudiantes),
     path("formulario/",formulario_curso),
     path("buscar/",formulario_busqueda),
-    path("universidad/",universidad_formulario)
+    path("universidad/",universidad_formulario),
+    path("auto/",auto_formulario),
+    path("idioma/",idioma_formulario)
         ]

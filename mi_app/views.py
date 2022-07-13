@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import  HttpResponse
 from datetime import datetime
-from mi_app.models import Familia,Curso,Estudiantes, Inscripcion
-from mi_app.forms import CursoBusquedaFormulario, CursoFormulario, InscripcionUniversidad
+from mi_app.models import Familia,Curso,Estudiantes, Inscripcion,Auto,Idioma
+from mi_app.forms import CursoBusquedaFormulario, CursoFormulario, InscripcionUniversidad,MiAuto,MiIdioma
 
 def saludo(request):
 
@@ -65,3 +65,34 @@ def universidad_formulario(request):
         miformulario = InscripcionUniversidad()
 
     return render(request,"mi_app/universidad.html",{"miformulario":miformulario})
+
+def auto_formulario(request):
+    if request.method == "POST":
+        miformulario2 = MiAuto(request.POST)
+        print(miformulario2)
+        if miformulario2.is_valid:
+            informacion2 = miformulario2.cleaned_data
+            orientacion2 = Auto(marca=informacion2["marca"],modelo=informacion2["modelo"])
+            orientacion2.save()
+            return render(request,"mi_app/index.html")
+
+    else:
+        miformulario2 = MiAuto()
+
+    return render(request,"mi_app/auto.html",{"miformulario2":miformulario2})
+
+
+def idioma_formulario(request):
+    if request.method == "POST":
+        miformulario3 = MiIdioma(request.POST)
+        print(miformulario3)
+        if miformulario3.is_valid:
+            informacion3 = miformulario3.cleaned_data
+            orientacion3 = Idioma(idioma=informacion3["idioma"],conocimiento=informacion3["conocimiento"])
+            orientacion3.save()
+            return render(request,"mi_app/index.html")
+
+    else:
+        miformulario3 = MiIdioma()
+
+    return render(request,"mi_app/idioma.html",{"miformulario3":miformulario3})

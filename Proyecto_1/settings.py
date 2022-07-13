@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mi_app.apps.MiAppConfig',
     'manejador_contenidos',
-    "universidad",
-    
+       
 
 ]
 

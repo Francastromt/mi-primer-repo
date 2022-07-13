@@ -25,3 +25,12 @@ class Inscripcion(models.Model):
     edad = models.IntegerField()
     carrera = models.CharField(max_length=50)
     horario = models.CharField(max_length=50)
+
+class Auto(models.Model):
+    marca = models.CharField(max_length=40)
+    modelo = models.IntegerField()
+
+class Idioma(models.Model):
+    idioma = models.CharField(max_length=40)
+    conocimiento = models.CharField(max_length=40)
+

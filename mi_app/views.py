@@ -1,56 +1,12 @@
 from django.shortcuts import render
 from django.http import  HttpResponse
 from datetime import datetime
-from mi_app.models import Familia,Curso,Estudiantes, Inscripcion,Auto,Idioma
-from mi_app.forms import CursoBusquedaFormulario, CursoFormulario, InscripcionUniversidad,MiAuto,MiIdioma
-
-def saludo(request):
-
-    fecha_hora_ahora = datetime.now()
-    return HttpResponse(f"Hola mundo{fecha_hora_ahora}")
-
-def saludar_a(request, nombre):
-    return HttpResponse(f"Hola como estas {nombre.capitalize()}")
+from mi_app.models import  Inscripcion,Auto,Idioma
+from mi_app.forms import BusquedaFormularioAuto, InscripcionUniversidad,MiAuto,MiIdioma
 
 def mostrar_index(request):
     return render(request,"mi_app/index.html",{"mi_titulo":"Hola mi primer website!"})
 
-
-def listar_cursos(request): #Vista
-    context = {}
-    context["cursos"] = Curso.objects.all() #Modelo
-    return render(request,"mi_app/lista_cursos.html",context) #Template
-
-   
-def familia(request):
-    context = {}
-    context["familia"] = Familia.objects.all()
-    return render(request,"mi_app/familia.html",context)
-
-def listar_estudiantes(request):
-    context = {}
-    context["estudiantes"] = Estudiantes.objects.all()
-    return render(request,"mi_app/lista_estudiantes.html",context)
-
-
-def formulario_curso(request):
-    if request.method == "POST":
-        pass
-    else:
-        mi_formulario = CursoFormulario(request.POST)
-        return render(request,"mi_app/curso_formulario.html",{"mi_formulario":mi_formulario})
-
-
-def formulario_busqueda(request):
-    if request.GET:
-        busqueda_curso = CursoBusquedaFormulario()
-        criterio = busqueda_curso.cleaned_data
-        cursos = Curso.objects.filter(nombre=criterio).all()
-        return render(request,"mi_app/buscar.html",{"cursos":cursos})
-
-    return render(request,"mi_app/buscar.html")
-
-#entregable
 def universidad_formulario(request):
     if request.method == "POST":
         miformulario = InscripcionUniversidad(request.POST)
@@ -96,3 +52,14 @@ def idioma_formulario(request):
         miformulario3 = MiIdioma()
 
     return render(request,"mi_app/idioma.html",{"miformulario3":miformulario3})
+
+
+def busqueda_auto(request):
+    
+    busqueda_formulario = BusquedaFormularioAuto()
+
+    if request.GET:
+        autos = Auto.objects.filter(marca=busqueda_formulario["criterio"]).all()
+        return render(request,"mi_app/busqueda_auto.html",{"autos":autos})
+    
+    return render(request,"mi_app/busqueda_auto.html",{"busqueda_formulario":busqueda_formulario})

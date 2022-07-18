@@ -1,12 +1,5 @@
 from django import forms
 
-class CursoFormulario(forms.Form):
-    curso = forms.CharField()
-    camada = forms.IntegerField()
-
-class CursoBusquedaFormulario(forms.Form):
-    criterio = forms.CharField()
-
 #entregable
 class InscripcionUniversidad(forms.Form):
     nombre = forms.CharField()
@@ -22,4 +15,6 @@ class MiAuto(forms.Form):
 class MiIdioma(forms.Form):
     idioma = forms.CharField()
     conocimiento = forms.CharField()
-    
+
+class BusquedaFormularioAuto(forms.Form):
+    criterio = forms.CharField()

@@ -63,3 +63,7 @@ def busqueda_auto(request):
         return render(request,"mi_app/busqueda_auto.html",{"autos":autos})
     
     return render(request,"mi_app/busqueda_auto.html",{"busqueda_formulario":busqueda_formulario})
+
+def form_uni(request):
+    context = {}
+    return render(request, "mi_app/hija1.html")
